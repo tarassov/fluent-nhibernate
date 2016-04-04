@@ -64,5 +64,22 @@ namespace FluentNHibernate.Mapping
             mapping.Set(x => x.EntityName, Layer.UserSupplied, entityName);
             return this;
         }
+
+        public KeyManyToOnePart Type<T>()
+        {
+            return Type(typeof(T));
+        }
+
+        public KeyManyToOnePart Type(System.Type type)
+        {
+            mapping.Set(x => x.Class, Layer.UserSupplied, new TypeReference(type));
+            return this;
+        }
+
+        public KeyManyToOnePart Type(string type)
+        {
+            mapping.Set(x => x.Class, Layer.UserSupplied, new TypeReference(type));
+            return this;
+        }
     }
 }
